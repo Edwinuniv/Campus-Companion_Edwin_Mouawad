@@ -108,7 +108,8 @@ class MainActivity : ComponentActivity() {
 
                             else -> EventsScreen(
                                 uiState = eventsUiState,
-                                onRefresh = { eventsViewModel.loadEvents() }
+                                onRefresh = { eventsViewModel.loadEvents() },
+                                onLoadMore = { eventsViewModel.loadMore() }
                             )
                         }
                     }

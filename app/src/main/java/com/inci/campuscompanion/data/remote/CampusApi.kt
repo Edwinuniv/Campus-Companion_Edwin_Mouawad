@@ -5,10 +5,14 @@ import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface CampusApi {
     @GET("events/event")
-    suspend fun getEvents(): List<EventDto>
+    suspend fun getEvents(
+        @Query("page") page: Int,
+        @Query("limit") limit: Int
+    ): List<EventDto>
 
     companion object {
         private const val BASE_URL = "https://6ad70838f71f154ac4879fac.mockapi.io/api/v1/"

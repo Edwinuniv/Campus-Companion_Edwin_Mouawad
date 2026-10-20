@@ -7,8 +7,8 @@ import com.inci.campuscompanion.model.CampusEvent
 class EventsRepository(
     private val remote: EventsRemoteDataSource
 ) {
-    suspend fun getEvents(): List<CampusEvent> =
-        remote.getEvents().map { dto -> dto.toCampusEvent() }
+    suspend fun getEvents(page: Int, limit: Int): List<CampusEvent> =
+        remote.getEvents(page, limit).map { dto -> dto.toCampusEvent() }
 
     private fun EventDto.toCampusEvent() = CampusEvent(
         id = id,
